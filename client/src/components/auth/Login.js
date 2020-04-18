@@ -6,6 +6,9 @@ const Login = () => {
     password: "",
   });
   const { username, password } = formData;
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <Fragment>
       <form>
@@ -17,8 +20,10 @@ const Login = () => {
                 type="username"
                 className="form-control"
                 id="username"
+                name="username"
                 placeholder=""
                 value={username}
+                onChange={(e) => onChange(e)}
               />
             </div>
           </div>
@@ -29,8 +34,10 @@ const Login = () => {
                 type="password"
                 className="form-control"
                 id="password"
+                name="password"
                 placeholder=""
                 value={password}
+                onChange={(e) => onChange(e)}
               />
             </div>
           </div>

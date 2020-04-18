@@ -13,8 +13,8 @@ function App() {
     <Router>
       <Fragment>
         <Nav />
-        <Route exact path="/" component={Landing} />
         <section className="container">
+          <Route exact path="/" component={Landing} />
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
