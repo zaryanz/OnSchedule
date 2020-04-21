@@ -9,30 +9,35 @@ const Login = () => {
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <Fragment>
-      <form>
-        <div className="row mt-4">
-          <div className="col">
-            <div className="form-group">
+      <div className="card mt-5 shadow">
+        <div className="card-body">
+          <h3 className="card-title text-center">Welcome Back</h3>
+          <p className="text-center">Log in to OnSchedule</p>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className="form-group mt-4">
               <label htmlFor="username">Username</label>
               <input
                 type="username"
-                className="form-control"
+                className="form-control mt-1"
                 id="username"
                 name="username"
+                aria-describedby="emailHelp"
                 placeholder=""
                 value={username}
                 onChange={(e) => onChange(e)}
               />
             </div>
-          </div>
-          <div className="col">
-            <div className="form-group">
+            <div className="form-group mt-2">
               <label htmlFor="password">Password</label>
               <input
-                type="password"
-                className="form-control"
+                type="text"
+                className="form-control mt-1"
                 id="password"
                 name="password"
                 placeholder=""
@@ -40,12 +45,12 @@ const Login = () => {
                 onChange={(e) => onChange(e)}
               />
             </div>
-          </div>
+            <button type="submit" className="btn btn-primary mt-2 mb-3">
+              Sign In
+            </button>
+          </form>
         </div>
-        <button type="submit" className="btn btn-primary mt-2">
-          Sign In
-        </button>
-      </form>
+      </div>
     </Fragment>
   );
 };

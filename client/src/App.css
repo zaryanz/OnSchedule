@@ -1,7 +1,47 @@
+body {
+  background-color: #f1edee;
+  font-family: "Open Sans", sans-serif;
+}
+
+a,
+a:visited {
+  outline: 0;
+}
+
 .App {
   text-align: center;
 }
 
-a {
-  outline: 0;
+.navbar {
+  background-color: #4b1d3f;
+  font-size: 21px;
+}
+
+.navbar-brand {
+  font-size: 25px;
+}
+
+.collapse {
+  float: right;
+}
+
+label {
+  font-size: 18px;
+}
+
+.btn-primary {
+  background-color: #6bd425;
+  border-color: #6bd425;
+  color: #f9ffff;
+  font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus {
+  background-color: #4a9419 !important;
+  border-color: #4a9419 !important;
+  color: #f9ffff !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
 }
