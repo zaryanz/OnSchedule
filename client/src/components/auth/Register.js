@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -7,13 +8,21 @@ const Register = () => {
     password: "",
     password2: "",
   });
+  const [errors, setErrors] = useState([]);
+
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const onSubmit = (e) => {
+
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+    const res = axios
+      .post("http://localhost:5000/users", formData)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error.response));
   };
+
   const { username, email, password, password2 } = formData;
   return (
     <Fragment>
@@ -46,6 +55,7 @@ const Register = () => {
                 value={username}
                 onChange={(e) => onChange(e)}
               />
+              <p value={errors.username} />
             </div>
             <div className="row mt-2">
               <div className="col">
