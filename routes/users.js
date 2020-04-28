@@ -2,10 +2,10 @@ const { Router } = require("express");
 const { check, validationResult } = require("express-validator");
 const router = Router();
 const bcrypt = require("bcryptjs");
-
+const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-// @@REGISTER ROUTE
+// @@REGISTRATION ROUTE
 router.post(
   "/",
   [
@@ -44,12 +44,29 @@ router.post(
 
     console.log(user);
     // saving user to db
-    await user.save(function (err) {
+    await user.save((err) => {
       if (err) return err;
       console.log("data saved");
+      console.log(user);
     });
 
-    res.json({ message: "Success" });
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    console.log(payload);
+    jwt.sign(
+      payload,
+      process.env.jwt,
+      (err, token) => {
+        if (err) throw err;
+        console.log(token);
+        res.json({ token });
+      },
+      { expiresIn: 3600 }
+    );
   }
 );
 
